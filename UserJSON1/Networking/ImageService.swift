@@ -1,5 +1,5 @@
 //
-//  ImageController.swift
+//  ImageService.swift
 //  UserJSON1
 //
 //  Created by Aron Veress on 23/08/2022.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-class ImageController {
-    static let sharedInstance = ImageController()
+class ImageService {
+    static let sharedInstance = ImageService()
     private init() {}
     
     private var images: Dictionary<String,UIImage> = Dictionary<String, UIImage>()
@@ -16,14 +16,15 @@ class ImageController {
     
     func requestImage(url: URL, onSuccess: @escaping ((UIImage)->Void)) {
         if(self.images[url.absoluteString] != nil) {
-            onSuccess(self.images[url.absoluteString]!)
+            if let image = self.images[url.absoluteString]{
+                onSuccess(image)
+            }
         } else {
             let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-                if(error == nil){
-                    DispatchQueue.main.async() {
-                        self.images[url.absoluteString] = UIImage(data: data!)
-                        onSuccess(self.images[url.absoluteString]!)
-                    }
+
+                if let data = data, let image = UIImage(data: data){
+                    self.images[url.absoluteString] = image
+                    onSuccess(image)
                 }
             }
             task.resume()

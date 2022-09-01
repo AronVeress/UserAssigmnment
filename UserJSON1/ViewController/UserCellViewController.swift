@@ -15,10 +15,6 @@ class UserCellViewController: UITableViewCell {
     @IBOutlet var timeLbl: UILabel!
     
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-        
     func setData(user: User){
         
         self.imgView.image = UIImage(named: "user_image_blank")
@@ -28,14 +24,17 @@ class UserCellViewController: UITableViewCell {
         
         self.nameLbl.text = "\(user.name.first.uppercased()) \(user.name.last.uppercased())"
         self.emailLbl.text = "\(user.email.lowercased())"
-
-        ImageController.sharedInstance.requestImage(url: user.picture.thumbnail){ (image) in 
-            self.imgView.image = image
-        }
         
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
-        timeLbl.text = "\(formatter.string(from:user.registered.date))"
+        self.timeLbl.text = "\(formatter.string(from:user.registered.date))"
+        
+        
+        ImageService.sharedInstance.requestImage(url: user.picture.thumbnail){ (image) in
+            DispatchQueue.main.async {
+                self.imgView.image = image
+            }
+        }
     }
 }
-    
+

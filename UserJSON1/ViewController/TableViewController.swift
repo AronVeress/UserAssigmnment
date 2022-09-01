@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TableViewController.swift
 //  UserJSON1
 //
 //  Created by Aron Veress on 14/08/2022.
@@ -9,20 +9,20 @@ import UIKit
 
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var users: Array<User> = Array<User>()
-    var itemPerPage = APIController()
+    var apiService = APIService()
     
-
+    
     @IBOutlet var userTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-            userTableView.dataSource = self
-            userTableView.delegate = self
-            requestUsers()
+        userTableView.dataSource = self
+        userTableView.delegate = self
+        
+        requestUsers()
         
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCellViewController
@@ -38,26 +38,18 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if(indexPath.row == self.users.count - 3) {
-            requestUsers()
-        }
-    }
-    
     func requestUsers() {
-        if(!APIController.sharedInstance.isOnRequest()) {
-            APIController.sharedInstance.downloadJson(item: itemPerPage.call, onSuccess: successfullyRetrievedUserList(retrievedUsers:), onFail: failedToRetrieveUserList(error:))
-        }
+        APIService.sharedInstance.fetchUsers(item: apiService.usersCount, onSuccess: successfullyRetrievedUserList(retrievedUsers:), onFail: failedToRetrieveUserList(error:))
     }
     
     func successfullyRetrievedUserList(retrievedUsers: Array<User>){
         users.append(contentsOf: retrievedUsers)
-        userTableView.reloadData()
-        userTableView.isHidden = false
+        DispatchQueue.main.async {
+            self.userTableView.reloadData()
+        }
     }
     
     func failedToRetrieveUserList(error: Error){
         print(error.localizedDescription)
-        userTableView.isHidden = true
     }
 }

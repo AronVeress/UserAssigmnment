@@ -9,7 +9,7 @@ import Foundation
 
 class URLBuilder {
     
-    func getUrl(call: String, seed: String) -> URL{
+    func getUrlForRandomUsers(call: String, seed: String) -> URL?{
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "randomuser.me"
@@ -18,7 +18,6 @@ class URLBuilder {
             URLQueryItem(name: "results", value: call),
             URLQueryItem(name: "seed", value: seed)
         ]
-        
-        return urlComponents.url!
+        return urlComponents.url
     }
 }
