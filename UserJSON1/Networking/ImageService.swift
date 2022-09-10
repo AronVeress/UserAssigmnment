@@ -9,9 +9,8 @@ import UIKit
 
 class ImageService {
     static let sharedInstance = ImageService()
-    private init() {}
     
-    private var images: Dictionary<String,UIImage> = Dictionary<String, UIImage>()
+    private var images: [String: UIImage] = Dictionary<String, UIImage>()
     
     
     func requestImage(url: URL, onSuccess: @escaping ((UIImage)->Void)) {

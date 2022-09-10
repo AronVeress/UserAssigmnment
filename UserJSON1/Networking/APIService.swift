@@ -28,23 +28,22 @@ class APIService {
         
         request.httpMethod = "GET"
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if(error != nil) {
-                    onFail(error!)
+            if let error = error {
+                onFail(error)
+                return
             } else {
                 do {
                     let decoder = JSONDecoder()
-                    
                     let formatter = DateFormatter()
                     formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
                     decoder.dateDecodingStrategy = .formatted(formatter)
                     
                     let result = try decoder.decode(Users.self, from: data!)
-                   
                     onSuccess(result.results)
                     
                 }
                     catch let error {
-                        onFail(error)
+                        print(String(describing: error))
                 }
             }
         }
