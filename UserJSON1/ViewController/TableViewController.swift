@@ -11,7 +11,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var users: Array<User> = Array<User>()
     var apiService = APIService()
     
-    
     @IBOutlet var userTableView: UITableView!
     
     override func viewDidLoad() {
@@ -26,7 +25,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCellViewController
-        cell.setData(user: users[indexPath.row])
+        cell.setDataUserCell(user: users[indexPath.row])
         return cell
     }
     
@@ -52,4 +51,11 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func failedToRetrieveUserList(error: Error){
         print(error.localizedDescription)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "viewUserDetail") {
+            (segue.destination as! UserDetailViewController).userFromUserDetail = users[userTableView.indexPathForSelectedRow!.row]
+        }
+    }
+    
 }

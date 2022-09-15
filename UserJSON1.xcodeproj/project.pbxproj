@@ -18,6 +18,7 @@
 		CE3A9A2A28A8FE2A0069E7B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3A9A2928A8FE2A0069E7B3 /* AppDelegate.swift */; };
 		CE3A9A2C28A8FE2A0069E7B3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3A9A2B28A8FE2A0069E7B3 /* SceneDelegate.swift */; };
 		CE3A9A3328A8FE2D0069E7B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE3A9A3228A8FE2D0069E7B3 /* Assets.xcassets */; };
+		CE5F574128C0BB810046DB06 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5F574028C0BB810046DB06 /* UserDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		CE3A9A2B28A8FE2A0069E7B3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CE3A9A3228A8FE2D0069E7B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE3A9A3728A8FE2D0069E7B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE5F574028C0BB810046DB06 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			children = (
 				CE0BC1C128B91A32005ACBA7 /* TableViewController.swift */,
 				CE0BC1C228B91A32005ACBA7 /* UserCellViewController.swift */,
+				CE5F574028C0BB810046DB06 /* UserDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 			files = (
 				CE0BC1C528B91A32005ACBA7 /* UserCellViewController.swift in Sources */,
 				CE0BC1B628B91A02005ACBA7 /* URLBuilder.swift in Sources */,
+				CE5F574128C0BB810046DB06 /* UserDetailViewController.swift in Sources */,
 				CE3A9A2A28A8FE2A0069E7B3 /* AppDelegate.swift in Sources */,
 				CE0BC1C428B91A32005ACBA7 /* TableViewController.swift in Sources */,
 				CE0BC1B528B91A02005ACBA7 /* APIService.swift in Sources */,
