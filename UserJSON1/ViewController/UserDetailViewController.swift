@@ -13,26 +13,25 @@ class UserDetailViewController: UIViewController, UITextViewDelegate{
     var userFromUserDetail: User?
     var userDict = [String:Any]()
      
-    @IBOutlet var userProfilePic: UIImageView!
-    @IBOutlet var userNameLabel: UILabel!
-    @IBOutlet var birthdayLabel: UILabel!
-    @IBOutlet var ageLabel: UILabel!
-    @IBOutlet var genderLabel: UILabel!
-    @IBOutlet var cellNumberLabel: UILabel!
-    @IBOutlet var phoneNumberLabel: UILabel!
-    @IBOutlet var regionLabel: UILabel!
-    @IBOutlet var exactLabel: UILabel!
-    @IBOutlet var scrollView: UIScrollView!
-    @IBOutlet var textField: UITextView!
-    @IBOutlet var activateTextField: UISwitch!
-    @IBAction func switchChanged(_ sender: Any) {
+    @IBOutlet private var userProfilePic: UIImageView!
+    @IBOutlet private var userNameLabel: UILabel!
+    @IBOutlet private var birthdayLabel: UILabel!
+    @IBOutlet private var ageLabel: UILabel!
+    @IBOutlet private var genderLabel: UILabel!
+    @IBOutlet private var cellNumberLabel: UILabel!
+    @IBOutlet private var phoneNumberLabel: UILabel!
+    @IBOutlet private var regionLabel: UILabel!
+    @IBOutlet private var exactLabel: UILabel!
+    @IBOutlet private var scrollView: UIScrollView!
+    @IBOutlet private var textField: UITextView!
+    @IBOutlet private var activateTextField: UISwitch!
+    @IBAction private func switchChanged(_ sender: Any) {
         if activateTextField.isOn {
-            textField.isHidden = true
-            writeToUserDefaults()
+            textField.isHidden = activateTextField.isOn
         } else {
-            textField.isHidden = false
-            writeToUserDefaults()
+            textField.isHidden = activateTextField.isOn
         }
+        writeToUserDefaults()
     }
     
     override func viewDidLoad() {
@@ -41,43 +40,7 @@ class UserDetailViewController: UIViewController, UITextViewDelegate{
         textField.delegate = self
         hideKeyboardWhenTappedAround()
         readFromUserDefaults()
-        
-        
-        //Image
-        ImageService.sharedInstance.requestImage(url: userFromUserDetail!.picture.large ){ (image) in
-            DispatchQueue.main.async {
-                self.userProfilePic.image = image
-            }
-        }
-        userProfilePic.layer.masksToBounds = true
-        userProfilePic.layer.cornerRadius = self.userProfilePic.frame.width / 2.0
-        
-        //Name Label
-        userNameLabel.text = "\(userFromUserDetail!.name.first.capitalized) \(userFromUserDetail!.name.last.capitalized)"
-        
-        //gender Label
-        genderLabel.text = userFromUserDetail?.gender.capitalized
-        
-        //birthday Label
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM/dd/yyyy"
-        birthdayLabel.text = "\(formatter.string(from:userFromUserDetail!.registered.date))"
-        
-        
-        //age label
-        ageLabel.text = "\(userFromUserDetail!.dob.age)"
-        
-        //cell number label
-        cellNumberLabel.text = userFromUserDetail?.cell
-        
-        //phone number label
-        phoneNumberLabel.text = userFromUserDetail?.phone
-        
-        //Country label
-        regionLabel.text = String("\(userFromUserDetail!.location.country), \(userFromUserDetail!.location.city)")
-        
-        //City label
-        exactLabel.text = "\(userFromUserDetail!.location.street.name), \(userFromUserDetail!.location.street.number) "
+        writeUserDetails()
         
         //keyboard management
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -87,6 +50,50 @@ class UserDetailViewController: UIViewController, UITextViewDelegate{
     }
     
     
+    func writeUserDetails(){
+        
+        guard let userToWrite = userFromUserDetail else {
+            return
+        }
+
+        
+        //Image
+        ImageService.sharedInstance.requestImage(url: userToWrite.picture.large ){ (image) in
+            DispatchQueue.main.async {
+                self.userProfilePic.image = image
+            }
+        }
+        userProfilePic.layer.masksToBounds = true
+        userProfilePic.layer.cornerRadius = self.userProfilePic.frame.width / 2.0
+        
+        //Name Label
+        userNameLabel.text = "\(userToWrite.name.first.capitalized) \(userToWrite.name.last.capitalized)"
+        
+        //gender Label
+        genderLabel.text = userToWrite.gender.capitalized
+        
+        //birthday Label
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy"
+        birthdayLabel.text = "\(formatter.string(from:userToWrite.registered.date))"
+        
+        
+        //age label
+        ageLabel.text = "\(userToWrite.dob.age)"
+        
+        //cell number label
+        cellNumberLabel.text = userToWrite.cell
+        
+        //phone number label
+        phoneNumberLabel.text = userToWrite.phone
+        
+        //Country label
+        regionLabel.text = String("\(userToWrite.location.country), \(userToWrite.location.city)")
+        
+        //City label
+        exactLabel.text = "\(userToWrite.location.street.name), \(userToWrite.location.street.number) "
+        
+    }
     
     @objc func writeToUserDefaults() {
         let userDefaults = UserDefaults.standard
@@ -104,7 +111,7 @@ class UserDetailViewController: UIViewController, UITextViewDelegate{
         let userDefaults = UserDefaults.standard
         let userData: [String:Any] = userDefaults.object(forKey: userKey) as? [String:Any] ?? [:]
         textField.text = userData["userTextInput"] as? String
-        activateTextField.isOn = userData["userBoolInput"] as! Bool
+        activateTextField.isOn = userData["userBoolInput"] as? Bool ?? false
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

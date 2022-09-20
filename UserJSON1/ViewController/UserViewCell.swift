@@ -1,5 +1,5 @@
 //
-//  UserCell.swift
+//  UserViewCell.swift
 //  UserJSON1
 //
 //  Created by Aron Veress on 14/08/2022.
@@ -7,13 +7,12 @@
 
 import UIKit
 
-class UserCellViewController: UITableViewCell {
+class UserViewCell: UITableViewCell {
     
     @IBOutlet var imgView: UIImageView!
     @IBOutlet var emailLbl: UILabel!
     @IBOutlet var nameLbl: UILabel!
     @IBOutlet var timeLbl: UILabel!
-    @IBOutlet var didTapUser: UIButton!
     
     func setDataUserCell(user: User){
         

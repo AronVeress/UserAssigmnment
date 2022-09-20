@@ -18,13 +18,12 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         userTableView.dataSource = self
         userTableView.delegate = self
-        
         requestUsers()
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCellViewController
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserViewCell
         cell.setDataUserCell(user: users[indexPath.row])
         return cell
     }
@@ -54,7 +53,8 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "viewUserDetail") {
-            (segue.destination as! UserDetailViewController).userFromUserDetail = users[userTableView.indexPathForSelectedRow!.row]
+            guard let indexP = userTableView.indexPathForSelectedRow?.row else {return}
+            (segue.destination as! UserDetailViewController).userFromUserDetail = users[indexP]
         }
     }
     
