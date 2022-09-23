@@ -9,10 +9,10 @@ import UIKit
 
 class UserViewCell: UITableViewCell {
     
-    @IBOutlet var imgView: UIImageView!
-    @IBOutlet var emailLbl: UILabel!
-    @IBOutlet var nameLbl: UILabel!
-    @IBOutlet var timeLbl: UILabel!
+    @IBOutlet private var imgView: UIImageView!
+    @IBOutlet private var emailLbl: UILabel!
+    @IBOutlet private var nameLbl: UILabel!
+    @IBOutlet private var timeLbl: UILabel!
     
     func setDataUserCell(user: User){
         

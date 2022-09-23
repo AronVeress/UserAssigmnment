@@ -8,10 +8,10 @@
 import UIKit
 
 class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var users: Array<User> = Array<User>()
-    var apiService = APIService()
+    private var users: Array<User> = Array<User>()
+    private var apiService = APIService()
     
-    @IBOutlet var userTableView: UITableView!
+    @IBOutlet private var userTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

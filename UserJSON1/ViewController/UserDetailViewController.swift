@@ -10,9 +10,6 @@ import UIKit
 
 class UserDetailViewController: UIViewController, UITextViewDelegate{
     
-    var userFromUserDetail: User?
-    var userDict = [String:Any]()
-     
     @IBOutlet private var userProfilePic: UIImageView!
     @IBOutlet private var userNameLabel: UILabel!
     @IBOutlet private var birthdayLabel: UILabel!
@@ -25,14 +22,9 @@ class UserDetailViewController: UIViewController, UITextViewDelegate{
     @IBOutlet private var scrollView: UIScrollView!
     @IBOutlet private var textField: UITextView!
     @IBOutlet private var activateTextField: UISwitch!
-    @IBAction private func switchChanged(_ sender: Any) {
-        if activateTextField.isOn {
-            textField.isHidden = activateTextField.isOn
-        } else {
-            textField.isHidden = activateTextField.isOn
-        }
-        writeToUserDefaults()
-    }
+    
+    var userFromUserDetail: User?
+    private var userDict = [String:Any]()
     
     override func viewDidLoad() {
         
@@ -50,13 +42,11 @@ class UserDetailViewController: UIViewController, UITextViewDelegate{
     }
     
     
-    func writeUserDetails(){
+    private func writeUserDetails(){
         
         guard let userToWrite = userFromUserDetail else {
             return
         }
-
-        
         //Image
         ImageService.sharedInstance.requestImage(url: userToWrite.picture.large ){ (image) in
             DispatchQueue.main.async {
@@ -71,7 +61,7 @@ class UserDetailViewController: UIViewController, UITextViewDelegate{
         
         //gender Label
         genderLabel.text = userToWrite.gender.capitalized
-        
+    
         //birthday Label
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yyyy"
@@ -95,7 +85,7 @@ class UserDetailViewController: UIViewController, UITextViewDelegate{
         
     }
     
-    @objc func writeToUserDefaults() {
+    @objc private func writeToUserDefaults() {
         let userDefaults = UserDefaults.standard
         guard let userKey = userFromUserDetail?.login.uuid else {return}
 
@@ -106,7 +96,7 @@ class UserDetailViewController: UIViewController, UITextViewDelegate{
 
     }
     
-    func readFromUserDefaults() {
+   private func readFromUserDefaults() {
         guard let userKey = userFromUserDetail?.login.uuid else {return}
         let userDefaults = UserDefaults.standard
         let userData: [String:Any] = userDefaults.object(forKey: userKey) as? [String:Any] ?? [:]
@@ -114,17 +104,23 @@ class UserDetailViewController: UIViewController, UITextViewDelegate{
         activateTextField.isOn = userData["userBoolInput"] as? Bool ?? false
     }
 
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+   private func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         writeToUserDefaults()
         textField.resignFirstResponder()
         return true
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
+    @objc private func keyboardWillShow(notification: NSNotification) {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else{
             return
         }
         self.view.frame.origin.y = 0 - keyboardSize.height
+    }
+    
+    @IBAction private func switchChanged(_ sender: Any) {
+        //readFromUserDefaults()
+        textField.isHidden = activateTextField.isOn
+        writeToUserDefaults()
     }
 }
 
