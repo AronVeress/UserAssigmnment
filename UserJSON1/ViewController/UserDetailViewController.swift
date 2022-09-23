@@ -38,9 +38,7 @@ class UserDetailViewController: UIViewController, UITextViewDelegate{
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(writeToUserDefaults), name: UIApplication.keyboardWillHideNotification, object: nil)
-        
     }
-    
     
     private func writeUserDetails(){
         
