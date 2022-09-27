@@ -7,26 +7,25 @@
 
 import UIKit
 
-class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var users: Array<User> = Array<User>()
-    var apiService = APIService()
+class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet private var userTableView: UITableView!
     
-    @IBOutlet var userTableView: UITableView!
+    private var users: Array<User> = Array<User>()
+    private var apiService = APIService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         userTableView.dataSource = self
         userTableView.delegate = self
-        
         requestUsers()
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCellViewController
-        cell.setData(user: users[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserViewCell
+        cell.setDataUserCell(user: users[indexPath.row])
         return cell
     }
     
@@ -52,4 +51,12 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func failedToRetrieveUserList(error: Error){
         print(error.localizedDescription)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "viewUserDetail") {
+            guard let indexP = userTableView.indexPathForSelectedRow?.row else {return}
+            (segue.destination as! UserDetailViewController).userFromUserDetail = users[indexP]
+        }
+    }
+    
 }

@@ -1,5 +1,5 @@
 //
-//  UserCell.swift
+//  UserViewCell.swift
 //  UserJSON1
 //
 //  Created by Aron Veress on 14/08/2022.
@@ -7,22 +7,21 @@
 
 import UIKit
 
-class UserCellViewController: UITableViewCell {
+class UserViewCell: UITableViewCell {
     
-    @IBOutlet var imgView: UIImageView!
-    @IBOutlet var emailLbl: UILabel!
-    @IBOutlet var nameLbl: UILabel!
-    @IBOutlet var timeLbl: UILabel!
+    @IBOutlet private var imgView: UIImageView!
+    @IBOutlet private var emailLbl: UILabel!
+    @IBOutlet private var nameLbl: UILabel!
+    @IBOutlet private var timeLbl: UILabel!
     
-    
-    func setData(user: User){
+    func setDataUserCell(user: User){
         
         self.imgView.image = UIImage(named: "user_image_blank")
         
         self.imgView.layer.cornerRadius = self.imgView.frame.width / 2
         self.imgView.layer.masksToBounds = true
         
-        self.nameLbl.text = "\(user.name.first.uppercased()) \(user.name.last.uppercased())"
+        self.nameLbl.text = "\(user.name.first.capitalized) \(user.name.last.capitalized)"
         self.emailLbl.text = "\(user.email.lowercased())"
         
         let formatter = DateFormatter()
