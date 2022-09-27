@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Users View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="TableViewController" customModule="UserJSON1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="UsersViewController" customModule="UserJSON1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -76,6 +76,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" id="5Bb-wj-E3A">
+                                <rect key="frame" x="0.0" y="438" width="414" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JMs-ju-7Ic">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
@@ -101,6 +105,7 @@
                             <constraint firstItem="0Zi-Kn-3xf" firstAttribute="top" secondItem="JMs-ju-7Ic" secondAttribute="bottom" id="RxC-gh-CjB"/>
                             <constraint firstItem="JMs-ju-7Ic" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="TOs-1I-U0J"/>
                             <constraint firstItem="JMs-ju-7Ic" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YTC-EV-QLX"/>
+                            <constraint firstItem="5Bb-wj-E3A" firstAttribute="top" secondItem="JMs-ju-7Ic" secondAttribute="bottom" constant="338" id="Zrt-G7-v5g"/>
                             <constraint firstItem="JMs-ju-7Ic" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bUm-5G-gda"/>
                             <constraint firstItem="JMs-ju-7Ic" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fCv-q1-v8O"/>
                             <constraint firstItem="0Zi-Kn-3xf" firstAttribute="top" secondItem="jNu-eU-jTv" secondAttribute="bottom" id="fYE-hC-0Fa"/>
@@ -112,6 +117,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="bxf-ra-Lrd"/>
                     <connections>
+                        <outlet property="activitySpinner" destination="5Bb-wj-E3A" id="45d-zN-TYp"/>
                         <outlet property="userTableView" destination="0Zi-Kn-3xf" id="uZ4-jW-s8S"/>
                     </connections>
                 </viewController>
