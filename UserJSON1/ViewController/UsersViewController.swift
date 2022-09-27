@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet private var userTableView: UITableView!
     
