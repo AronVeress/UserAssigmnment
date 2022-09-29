@@ -7,8 +7,6 @@
 
 import UIKit
 
-private var internetRequest = false
-
 class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet private var userTableView: UITableView!
@@ -56,7 +54,6 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     private func failedToRetrieveUserList(error: Error){
         print(error.localizedDescription)
-        internetRequest = false
     }
     
     private func showSpinner(){
