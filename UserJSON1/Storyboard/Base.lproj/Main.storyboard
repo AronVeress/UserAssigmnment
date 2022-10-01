@@ -80,8 +80,8 @@
                                 <rect key="frame" x="0.0" y="438" width="414" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JMs-ju-7Ic">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JMs-ju-7Ic">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="84H-Dg-Hbk"/>
