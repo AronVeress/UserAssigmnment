@@ -46,7 +46,7 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         } else {
             user = users[indexPath.row]
         }
-        cell.setDataUserCell(user: users[indexPath.row])
+        cell.setDataUserCell(user: user)
         return cell
     }
     
