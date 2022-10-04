@@ -10,6 +10,7 @@ import UIKit
 class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet private var userTableView: UITableView!
+    @IBOutlet var activitySpinner: UIActivityIndicatorView!
     
     private var users: Array<User> = Array<User>()
     private var apiService = APIService()
@@ -19,6 +20,8 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         userTableView.dataSource = self
         userTableView.delegate = self
+        
+        showSpinner()
         requestUsers()
         
     }
@@ -37,19 +40,31 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func requestUsers() {
+    private func requestUsers() {
         APIService.sharedInstance.fetchUsers(item: apiService.usersCount, onSuccess: successfullyRetrievedUserList(retrievedUsers:), onFail: failedToRetrieveUserList(error:))
     }
     
-    func successfullyRetrievedUserList(retrievedUsers: Array<User>){
+    private func successfullyRetrievedUserList(retrievedUsers: Array<User>){
         users.append(contentsOf: retrievedUsers)
         DispatchQueue.main.async {
             self.userTableView.reloadData()
+            self.hideSpinner()
         }
     }
     
-    func failedToRetrieveUserList(error: Error){
+    private func failedToRetrieveUserList(error: Error){
         print(error.localizedDescription)
+    }
+    
+    private func showSpinner(){
+        activitySpinner.startAnimating()
+        userTableView.isHidden = true
+    }
+    
+    private func hideSpinner(){
+        activitySpinner.stopAnimating()
+        activitySpinner.hidesWhenStopped = true
+        userTableView.isHidden = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
