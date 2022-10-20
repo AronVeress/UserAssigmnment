@@ -30,7 +30,7 @@
 		CE0BC1BB28B91A1F005ACBA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE0BC1C128B91A32005ACBA7 /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		CE0BC1C228B91A32005ACBA7 /* UserViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewCell.swift; sourceTree = "<group>"; };
-		CE3A9A2628A8FE2A0069E7B3 /* UserJSON1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserJSON1.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE3A9A2628A8FE2A0069E7B3 /* Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Users.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3A9A2928A8FE2A0069E7B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE3A9A2B28A8FE2A0069E7B3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CE3A9A3228A8FE2D0069E7B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,7 +90,7 @@
 		CE3A9A2728A8FE2A0069E7B3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CE3A9A2628A8FE2A0069E7B3 /* UserJSON1.app */,
+				CE3A9A2628A8FE2A0069E7B3 /* Users.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,9 +112,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CE3A9A2528A8FE2A0069E7B3 /* UserJSON1 */ = {
+		CE3A9A2528A8FE2A0069E7B3 /* Users */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CE3A9A3A28A8FE2D0069E7B3 /* Build configuration list for PBXNativeTarget "UserJSON1" */;
+			buildConfigurationList = CE3A9A3A28A8FE2D0069E7B3 /* Build configuration list for PBXNativeTarget "Users" */;
 			buildPhases = (
 				CE3A9A2228A8FE2A0069E7B3 /* Sources */,
 				CE3A9A2328A8FE2A0069E7B3 /* Frameworks */,
@@ -124,9 +124,9 @@
 			);
 			dependencies = (
 			);
-			name = UserJSON1;
+			name = Users;
 			productName = UserJSON1;
-			productReference = CE3A9A2628A8FE2A0069E7B3 /* UserJSON1.app */;
+			productReference = CE3A9A2628A8FE2A0069E7B3 /* Users.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -144,7 +144,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CE3A9A2128A8FE290069E7B3 /* Build configuration list for PBXProject "UserJSON1" */;
+			buildConfigurationList = CE3A9A2128A8FE290069E7B3 /* Build configuration list for PBXProject "Users" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -157,7 +157,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CE3A9A2528A8FE2A0069E7B3 /* UserJSON1 */,
+				CE3A9A2528A8FE2A0069E7B3 /* Users */,
 			);
 		};
 /* End PBXProject section */
@@ -385,7 +385,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CE3A9A2128A8FE290069E7B3 /* Build configuration list for PBXProject "UserJSON1" */ = {
+		CE3A9A2128A8FE290069E7B3 /* Build configuration list for PBXProject "Users" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CE3A9A3828A8FE2D0069E7B3 /* Debug */,
@@ -394,7 +394,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CE3A9A3A28A8FE2D0069E7B3 /* Build configuration list for PBXNativeTarget "UserJSON1" */ = {
+		CE3A9A3A28A8FE2D0069E7B3 /* Build configuration list for PBXNativeTarget "Users" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CE3A9A3B28A8FE2D0069E7B3 /* Debug */,
