@@ -20,14 +20,20 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //title = "Search"
-        navigationItem.searchController = searchController
         userTableView.dataSource = self
         userTableView.delegate = self
         
         showSpinner()
         requestUsers()
         initSearchController()
+    }
+    
+    private func initSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search users"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
     
     var isSearchBarEmpty: Bool {
@@ -60,14 +66,6 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    private func initSearchController() {
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search for users"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
     }
     
     func filterContentForSearchText(_ searchText: String, category: User? = nil) {

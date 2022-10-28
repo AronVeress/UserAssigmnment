@@ -9,23 +9,19 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Users View Controller-->
+        <!--Users-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="UsersViewController" customModule="UserJSON1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Users" id="BYZ-38-t0r" customClass="UsersViewController" customModule="Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JMs-ju-7Ic">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
-                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Zi-Kn-3xf" userLabel="User Table View">
-                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="804"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="73" id="j8z-tB-0vt" customClass="UserViewCell" customModule="UserJSON1" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="73" id="j8z-tB-0vt" customClass="UserViewCell" customModule="Users" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="414" height="73"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="j8z-tB-0vt" id="3aF-eJ-WoP">
@@ -85,33 +81,17 @@
                                 <rect key="frame" x="0.0" y="438" width="414" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Users" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNu-eU-jTv">
-                                <rect key="frame" x="150" y="20" width="114" height="80"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0Zi-Kn-3xf" secondAttribute="trailing" id="9LI-ot-3qI"/>
-                            <constraint firstItem="0Zi-Kn-3xf" firstAttribute="top" secondItem="jNu-eU-jTv" secondAttribute="bottom" id="GyH-wM-StF"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jNu-eU-jTv" secondAttribute="trailing" constant="150" id="L8l-gh-Qn9"/>
-                            <constraint firstItem="0Zi-Kn-3xf" firstAttribute="top" secondItem="JMs-ju-7Ic" secondAttribute="bottom" id="RxC-gh-CjB"/>
-                            <constraint firstItem="JMs-ju-7Ic" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="TOs-1I-U0J"/>
-                            <constraint firstItem="JMs-ju-7Ic" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YTC-EV-QLX"/>
-                            <constraint firstItem="5Bb-wj-E3A" firstAttribute="top" secondItem="JMs-ju-7Ic" secondAttribute="bottom" constant="338" id="Zrt-G7-v5g"/>
-                            <constraint firstItem="JMs-ju-7Ic" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bUm-5G-gda"/>
-                            <constraint firstItem="jNu-eU-jTv" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="cTh-9D-vMC"/>
-                            <constraint firstItem="JMs-ju-7Ic" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fCv-q1-v8O"/>
-                            <constraint firstItem="0Zi-Kn-3xf" firstAttribute="top" secondItem="jNu-eU-jTv" secondAttribute="bottom" id="fYE-hC-0Fa"/>
-                            <constraint firstItem="JMs-ju-7Ic" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vdN-Dz-wdm"/>
                             <constraint firstItem="0Zi-Kn-3xf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xXa-PE-Y7j"/>
-                            <constraint firstItem="jNu-eU-jTv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="150" id="xsQ-Ws-pNG"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0Zi-Kn-3xf" secondAttribute="bottom" id="zlT-nc-3Hr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0Zi-Kn-3xf" secondAttribute="bottom" constant="-34" id="zlT-nc-3Hr"/>
+                            <constraint firstItem="0Zi-Kn-3xf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="zz6-O6-bwz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="bxf-ra-Lrd"/>
+                    <navigationItem key="navigationItem" title="Users" id="bxf-ra-Lrd"/>
                     <connections>
                         <outlet property="activitySpinner" destination="5Bb-wj-E3A" id="45d-zN-TYp"/>
                         <outlet property="userTableView" destination="0Zi-Kn-3xf" id="uZ4-jW-s8S"/>
@@ -124,7 +104,7 @@
         <!--User Detail View Controller-->
         <scene sceneID="KVK-uH-WJG">
             <objects>
-                <viewController storyboardIdentifier="userDetail" id="J5n-5D-zFB" customClass="UserDetailViewController" customModule="UserJSON1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="userDetail" id="J5n-5D-zFB" customClass="UserDetailViewController" customModule="Users" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lX4-cA-Coi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
