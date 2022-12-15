@@ -20,7 +20,6 @@ class UsersViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         userTableView.dataSource = self
         userTableView.delegate = self
-        
         showSpinner()
         requestUsers()
         

@@ -44,8 +44,13 @@ struct Location: Codable {
     let street: Street
     let city: String
     let country: String
+    let coordinates: Coordinates
 }
 
+struct Coordinates: Codable {
+    let latitude: String
+    let longitude: String
+}
 struct Street: Codable {
     let number: Int
     let name: String
